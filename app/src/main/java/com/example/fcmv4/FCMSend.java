@@ -18,8 +18,8 @@ import java.util.Map;
 
 public class FCMSend {
     private static String BASE_URL = "https://fcm.googleapis.com/fcm/send";
-    private static String SERVER_KEY = "key=AAAAH-kl5mo:APA91bHOlNtDfab7PD-qhwP6P0gVWod14C4dqP_vn438q3nVuaE2h3QbDx6SN1Kxa2V6pbNOpTlA5W-1hm0S4fRs-3MmNxP2rAgAbdvWDh2QLM0SShnIxMe2tbipenUKqzmiw_gYf9_9";
-
+    private static String SERVER_KEY = "key=";  //ENTER YOUR SERVER KEY
+    //private static String SERVER_KEY = "key=XXXXXXXX";
     public static void pushNotification(Context context,String token,String title,String message){
         StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -31,8 +31,6 @@ public class FCMSend {
             notification.put("title",title);
             notification.put("body",message);
             json.put("notification",notification);
-
-
             JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, BASE_URL, json, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -52,9 +50,7 @@ public class FCMSend {
                     return params;
                 }
             };
-
             queue.add(jsonObjectRequest);
-
         }   catch (JSONException e){
             e.printStackTrace();
         }

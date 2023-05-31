@@ -14,7 +14,6 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 public class PushNotificationService extends FirebaseMessagingService {
-
     @SuppressLint({"NewApi", "MissingPermission"})
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
@@ -34,9 +33,6 @@ public class PushNotificationService extends FirebaseMessagingService {
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setAutoCancel(true);
         NotificationManagerCompat.from(this).notify(1,notification.build());
-
-
-
         super.onMessageReceived(remoteMessage);
     }
 }

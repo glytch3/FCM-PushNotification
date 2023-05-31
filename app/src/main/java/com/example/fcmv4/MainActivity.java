@@ -25,16 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText mTitle,mMessage;
 
-    //afnan - fdICascoQ2OZoTH4v8S012:APA91bFTQoi3_w1gy-6X4cMSy0IlVV_Q4_l_W8uCdoGzpBaKv7S7xugQDmkoAeK4cB5dbIn-kOKityJPUnEJgb3XN9uENwlTBs48H4FcDouUzDIk1VN9wASgjL-33yIXbCjLhQDWCrjX
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mTitle=findViewById(R.id.mTitle);
         mMessage=findViewById(R.id.mMessage);
-
         Log.d("START SEND", "onCreate: ");
         findViewById(R.id.mSend).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!title.equals("") && !message.equals("")){
                     FCMSend.pushNotification(
                             MainActivity.this,
-                            "fdICascoQ2OZoTH4v8S012:APA91bFTQoi3_w1gy-6X4cMSy0IlVV_Q4_l_W8uCdoGzpBaKv7S7xugQDmkoAeK4cB5dbIn-kOKityJPUnEJgb3XN9uENwlTBs48H4FcDouUzDIk1VN9wASgjL-33yIXbCjLhQDWCrjX",
+                            "XXXXXXXXXXXXXXXX", //ENTER THE TOKEN FOR THE DEVICE YOU WANT TO SEND THE MESSAGE TO.... HOW? LINE NO. 54
                             title,
                             message
                     );
@@ -53,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         });
         Log.d("END SEND", "onCreate: ");
 
-
+// THE COMMENTED OUT CODE IS USED TO GET THE TOKEN FOR YOUR DEVICE THAT YOU WANT TO SEND THE NOTIFICATION TO
 //        // This is only necessary for API level >= 33 (TIRAMISU)
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 //            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
@@ -78,13 +74,12 @@ public class MainActivity extends AppCompatActivity {
 //                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
 //                            return;
 //                        }
-//
 //                        // Get new FCM registration token
 //                        String token = task.getResult();
 //                        Log.d("token", ""+token);
-//
 //                    }
 //                });
+
     }
 
     private final ActivityResultLauncher<String> requestPermissionLauncher =
